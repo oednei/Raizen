@@ -1,0 +1,56 @@
+﻿@model ClienteModel
+
+@{
+    ViewData["Title"] = "Cadastrar Clientes";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Cadastrar Clientes</h1>
+
+</div>
+
+
+<form asp-controller="Cliente" asp-action="Criar" method="post">
+
+    <div class="mb-3">
+        <label for="nome">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do Cliente">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="mb-3">
+        <label for="email">E-mail</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o E-mail do Cliente">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div class="mb-3">
+        <label for="DataNascimento">Data de Nascimento</label>
+        <input type="text" asp-for="DataNascimento" class="form-control" placeholder="Digite a Data Nascimento do Cliente">
+        @Html.ValidationMessageFor(x => x.DataNascimento)
+    </div>
+
+    <div class="mb-3">
+        <label for="CEP">CEP</label>
+        <input type="number" asp-for="CEP" class="form-control cliente-cep" placeholder="Digite o CEP do cliente. Ex: 99999999">
+        @Html.ValidationMessageFor(x => x.CEP)
+    </div>
+
+    <div class="alert alert-warning cep-alert cep" role="alert">
+        <div class="spinner-border" role="status">
+            <span class="sr-only"></span>
+        </div>
+        <div class="texto">
+            Carregando informação...
+        </div>
+    </div>
+    <div class="alert alert-info cep-info cep" role="alert">
+        <div class="texto"></div>
+    </div>
+
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Adicionar</button>
+        <a class="btn btn-secondary btn-lg btn-block" asp-controller="Cliente" asp-action="Index" role="button">Voltar</a>
+    </div>
+</form>
